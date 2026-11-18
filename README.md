@@ -56,7 +56,7 @@ java -jar target/log-analyzer.jar app.log --from 2026-11-17T14:00 --to 2026-11-1
 
 **Large files are read as a stream.** `LogParser.parse(Path)` reads entries as the stream is consumed. It does not load the whole file into a list. Close the stream with try-with-resources; the CLI already does this.
 
-**Bursts are based on repeated normalized errors.** The threshold and time window can be changed from the command line. This is a simple way to spot a sudden run of the same failure.
+**Bursts are based on repeated normalized errors.** The threshold and time window can be changed from the command line. This is a simple way to spot a sudden run of the same failure. Burst detection processes entries in file order and does not sort or buffer them, so the input should be chronological for the time window to reflect actual event order.
 
 ## A couple of limits
 
