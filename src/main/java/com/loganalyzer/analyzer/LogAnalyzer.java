@@ -19,10 +19,10 @@ import java.util.stream.Stream;
  * Turns a stream of log entries into an {@link AnalysisResult}.
  *
  * <p>Consumes the stream once, in a single pass, without retaining every
- * input entry. It keeps aggregate state for each distinct normalized message
- * and stores each detected burst in the result. Memory therefore grows with
- * message cardinality and burst count; streaming input does not make the full
- * analysis constant-memory for every possible log file.
+ * input entry. It keeps aggregate state for each distinct normalized message,
+ * each hour bucket, and every detected burst. Memory therefore grows with
+ * message cardinality, log duration, and burst count; streaming input does
+ * not make the full analysis constant-memory for every possible log file.
  *
  * <p><strong>Message normalization</strong> is what makes the "top errors"
  * list useful: real error messages embed ids (order numbers, UUIDs, trace
